@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>oBispo | Anderson Bispo</title>
+<meta name="description" content="Anderson Bispo: engenheiro de dados sênior e cientista de dados. Crio produtos com dados e IA.">
+<link rel="icon" href="assets/mascote.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5fb;
+    --card: #ffffff;
+    --ink: #111118;
+    --muted: #55556a;
+    --line: #e4e2ef;
+    --hover: #111118;
+    --btn: #111118;
+    --btn-hover: #3b3b4f;
+    --btn-ink: #ffffff;
+    --accent: #6d3fd1;
+    --accent-2: #1f4fb8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0d14;
+      --card: #17161f;
+      --ink: #f3f2f8;
+      --muted: #a7a5b8;
+      --line: #2a2836;
+      --hover: #b9a3f5;
+      --btn: #f3f2f8;
+      --btn-hover: #cfcbe0;
+      --btn-ink: #111118;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0d14; --card: #17161f; --ink: #f3f2f8; --muted: #a7a5b8;
+    --line: #2a2836; --hover: #b9a3f5; --btn: #f3f2f8; --btn-hover: #cfcbe0; --btn-ink: #111118;
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 0);
+    background-size: 22px 22px;
+    color: var(--ink);
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    max-width: 80rem;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+  }
+  @media (min-width: 768px) {
+    .page { flex-direction: row; height: 100vh; overflow: hidden; }
+    .profile { width: 33.333%; }
+    .projects { width: 66.666%; overflow-y: auto; padding-right: 16px; padding-bottom: 60px; }
+  }
+
+  /* Coluna da esquerda */
+  .profile {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  .avatar {
+    width: 60%;
+    max-width: 240px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 8%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: 4px solid var(--card);
+    box-shadow: 0 10px 30px rgb(0 0 0 / .12);
+  }
+  h1 { font-size: 1.875rem; font-weight: 800; margin-top: 8px; }
+  .tagline { color: var(--muted); max-width: 300px; line-height: 1.45; }
+  .tagline b { color: var(--ink); }
+
+  .socials { display: flex; gap: 16px; margin-top: 6px; }
+  .socials a { opacity: .8; transition: opacity .15s, transform .15s; }
+  .socials a:hover { opacity: 1; transform: translateY(-2px); }
+  .socials svg { width: 26px; height: 26px; fill: currentColor; }
+
+  .btn {
+    width: 16rem;
+    margin-top: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: var(--btn);
+    color: var(--btn-ink);
+    font-size: .875rem;
+    font-weight: 700;
+    transition: background .15s;
+  }
+  .btn:hover { background: var(--btn-hover); }
+
+  .meta { margin-top: 18px; font-size: .75rem; color: var(--muted); line-height: 1.6; }
+
+  /* Coluna da direita */
+  .projects { padding-top: 80px; padding-bottom: 80px; }
+  .section-title {
+    font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 10px 4px;
+  }
+  .section-title:not(:first-child) { margin-top: 28px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .06), 0 4px 6px -4px rgb(0 0 0 / .06);
+    transition: border-color .15s;
+  }
+  @media (min-width: 768px) { .card { padding: 24px 32px; } }
+  a.card:hover { border-color: var(--hover); }
+  .thumb {
+    flex: 0 0 75px; width: 75px; height: 75px;
+    border-radius: 10px; overflow: hidden;
+    display: grid; place-items: center;
+    font-size: 2.1rem;
+    background: linear-gradient(135deg, var(--c1, #6d3fd1), var(--c2, #1f4fb8));
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .card h3 { font-size: 1.25rem; font-weight: 700; }
+  .card p { font-size: .75rem; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+  .tag {
+    display: inline-block; margin-top: 6px; font-size: .65rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent);
+  }
+
+  footer { font-size: .7rem; color: var(--muted); text-align: center; margin-top: 40px; }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <section class="profile">
+    <img class="avatar" src="assets/mascote.webp" alt="Ilustração de Anderson Bispo">
+    <h1>Anderson Bispo</h1>
+    <p class="tagline">Engenheiro de Dados Sênior e Cientista de Dados. Crio <b>produtos com dados e IA</b>.</p>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/obispolinux" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2c-3.1 0-3.5 0-4.7.1-1 0-1.6.2-2 .3-.5.2-.8.4-1.1.7-.3.3-.6.7-.7 1.1-.1.4-.3.9-.3 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 1 .2 1.6.3 2 .2.5.4.8.7 1.1.3.3.7.6 1.1.7.4.1.9.3 2 .3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.6-.2 2-.3.5-.2.8-.4 1.1-.7.3-.3.6-.7.7-1.1.1-.4.3-.9.3-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.6-.3-2-.2-.5-.4-.8-.7-1.1-.3-.3-.7-.6-1.1-.7-.4-.1-.9-.3-2-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 7.2a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6zm5.6-7.4a1 1 0 1 1-2.1 0 1 1 0 0 1 2.1 0z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/anderson-bishopx/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9.5h3V19zM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.8 13 12.8 14.3V19h-3V9.5h2.8v1.3h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.6 2 3.6 4.7V19z"/></svg>
+      </a>
+      <a href="https://github.com/bishoppython" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+      </a>
+    </div>
+
+    <a class="btn" href="https://bishoppython.github.io" target="_blank" rel="noopener">Portfólio de Dados 📊</a>
+    <a class="btn" href="https://www.instagram.com/obispolinux" target="_blank" rel="noopener">1 Minuto de Tecnologia 🎬</a>
+    <a class="btn" href="mailto:anderson.bispox@gmail.com?subject=Contato%20pelo%20site">Automação com IA 🤖</a>
+
+    <p class="meta">📍 Caruaru-PE · Mestrando no PPGEC/UPE<br>Fundador e CTO da NeuroKids</p>
+  </section>
+
+  <section class="projects">
+    <h2 class="section-title">Produtos e negócios</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="thumb" style="--c1:#7c4dff;--c2:#00b4d8">🧠</div>
+        <div><h3>NeuroKids</h3><p>App que reduz a carga cognitiva dos terapeutas ao documentar sessões de acomodação sensorial e acompanhar a evolução do paciente.</p><span class="tag">Fundador e CTO</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#1f4fb8;--c2:#22c55e">🎯</div>
+        <div><h3>Prospector</h3><p>Prospecção B2B automatizada: captação, enriquecimento, score de leads e disparo, entregando ao cliente só quem respondeu.</p><span class="tag">Serviço oBispo</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#16a34a;--c2:#15803d">💬</div>
+        <div><h3>Automação com IA</h3><p>Chatbots de WhatsApp e automações com IA para pequenas e médias empresas atenderem e venderem mais.</p><span class="tag">Serviço oBispo</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#f97316;--c2:#e11d48">🏙️</div>
+        <div><h3>Viva Caruaru</h3><p>Aplicativo para descobrir o comércio e os serviços de Caruaru, com painel gerenciador para os estabelecimentos.</p></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#111827;--c2:#6d3fd1">🎙️</div>
+        <div><h3>Jarvis</h3><p>Assistente de voz pessoal: digo "Hey Jarvis" e ele abre apps, cria lembretes e organiza minhas notas.</p></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#0ea5e9;--c2:#2563eb">📢</div>
+        <div><h3>oConcurseiro</h3><p>Busca concursos no Brasil inteiro e entrega as oportunidades por Telegram, WhatsApp, e-mail e um portal.</p><span class="tag">Em breve</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Cases de dados</h2>
+    <div class="grid">
+      <a class="card" href="https://bishoppython.github.io/telco-churn-diagnostico/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/churn.webp" alt="Telco Churn"></div>
+        <div><h3>Telco Churn</h3><p>Diagnóstico de cancelamento de clientes de telecom, com modelo preditivo e dashboard interativo.</p></div>
+      </a>
+      <a class="card" href="https://bishoppython.github.io/previsao-vendas-varejo/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/varejo.webp" alt="Previsão de Vendas"></div>
+        <div><h3>Previsão de Vendas</h3><p>Previsão de vendas no varejo com séries temporais e pipeline reprodutível.</p></div>
+      </a>
+      <a class="card" href="https://bishoppython.github.io/spotify-popularidade-analytics/" target="_blank" rel="noopener">
+        <div class="thumb"><img src="assets/spotify.webp" alt="Spotify Analytics"></div>
+        <div><h3>Spotify Analytics</h3><p>O que torna uma música popular? Análise das características das faixas do Spotify.</p></div>
+      </a>
+      <a class="card" href="https://www.instagram.com/obispolinux" target="_blank" rel="noopener">
+        <div class="thumb" style="--c1:#6d3fd1;--c2:#c026d3">⏱️</div>
+        <div><h3>1 Minuto de Tecnologia</h3><p>Série de conteúdo que explica conceitos de tecnologia, dados e IA em um minuto.</p></div>
+      </a>
+    </div>
+
+    <h2 class="section-title">Livros</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="thumb" style="--c1:#78350f;--c2:#b45309">⚖️</div>
+        <div><h3>O Justo Juiz</h3><p>Livro em escrita.</p><span class="tag">Em breve</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="--c1:#312e81;--c2:#7c3aed">🌀</div>
+        <div><h3>O Portal</h3><p>Livro em escrita.</p><span class="tag">Em breve</span></div>
+      </div>
+    </div>
+
+    <footer>oBispo · Todos os direitos reservados © 2026</footer>
+  </section>
+
+</main>
+</body>
+</html>
